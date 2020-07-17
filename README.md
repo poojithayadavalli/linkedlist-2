@@ -14,7 +14,7 @@ Input:
 1 2 -3 3 1
 
 Output:
-3 1
+1 3 1
 
 Example 2:
 
