@@ -4,39 +4,50 @@ class Node:
     self.next=None
     
 def linkedList(llist):
-  head=Node(llist(0))
+  head=Node(llist[0])
   temp=head
   for i in range(1,len(llist)):
     temp.next=Node(llist[i])
     temp=temp.next
   return head
 
+def display(head):
+  l=[]
+  while head:
+    l.append(str(head.data))
+    head=head.next
+  return "".join(l)
 def solution(head):
   if head==None:
-    return
-  pre=cur=head
-  temp=head.next
+    return False
+  cur = head
   while cur and cur.next:
+    pre=head
+    temp=head.next
     while pre and temp:
-      if pre.data+temp.data<=0:
-        if head==head:
-          head=temp.next
-          pre=head
-          tem=head.next
-        else:
-          temp1.next=temp.next
+      flag=True
+      if pre.data + temp.data <=0:
+        flag=False
+        if head==pre:
           pre=temp.next
           temp=pre.next
+          head=pre
+        else:
+          temp1.next=temp.next
+          pre=temp1.next
+          if pre:
+            temp=pre.next
+          else:
+            break
       else:
         temp1=pre
         pre=pre.next
         temp=temp.next
     cur=cur.next
-def display(head):
-  l=[]
-  while head:
-    l.append(str(head.data))
-  print(" ".join(l))
+    if flag:break
+  return head
+ 
 llist=list(map(int,input().split()))
 head=linkedList(llist)
-display(solution(head))
+head=solution(head)
+print(display(head))
