@@ -16,21 +16,23 @@ def display(head):
   while head:
     l.append(str(head.data))
     head=head.next
-  return "".join(l)
+  return " ".join(l)
+
 def solution(head):
   if head==None:
     return False
   cur = head
   while cur and cur.next:
-    pre=head
-    temp=head.next
+    pre=cur
+    temp=cur.next
     while pre and temp:
       flag=True
       if pre.data + temp.data <=0:
         flag=False
         if head==pre:
           pre=temp.next
-          temp=pre.next
+          if pre:
+            temp=pre.next
           head=pre
         else:
           temp1.next=temp.next
